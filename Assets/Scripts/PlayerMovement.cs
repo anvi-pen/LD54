@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private float speed = 5;
 
     [SerializeField] GameObject bulletPrefab;
+    [SerializeField] private PlayerManager player;
 
     // Start is called before the first frame update
     void Start()
@@ -35,10 +36,17 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnShoot()
     {
-        GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-        Vector2 dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        Vector2 dirNorm = dir.normalized;
-        bullet.GetComponent<Bullet>().setDir(dirNorm.x, dirNorm.y);
+        Debug.Log(player.getBullets());
+        if (player.getBullets() > 0)
+        {
+            GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+            Vector2 dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+            Vector2 dirNorm = dir.normalized;
+            bullet.GetComponent<Bullet>().setDir(dirNorm.x, dirNorm.y);
+            player.addBullets(-1);
+            
+        }
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
