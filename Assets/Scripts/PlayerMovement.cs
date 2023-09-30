@@ -36,11 +36,9 @@ public class PlayerMovement : MonoBehaviour
     private void OnShoot()
     {
         GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-        Vector2 dir = Input.mousePosition - transform.position;
-        float angle = Mathf.Atan2(dir.y, dir.x);
-        float x = Mathf.Cos(angle);
-        float y = Mathf.Sin(angle);
-        bullet.GetComponent<Bullet>().setDir(x, y);
+        Vector2 dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        Vector2 dirNorm = dir.normalized;
+        bullet.GetComponent<Bullet>().setDir(dirNorm.x, dirNorm.y);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
