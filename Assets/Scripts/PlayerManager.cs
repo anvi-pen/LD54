@@ -21,6 +21,7 @@ public class PlayerManager : MonoBehaviour
     private TMP_Text Sanity_text;
     private TMP_Text Bullet_text;
     public static PlayerManager self;
+
     private void Awake()
     {
         Health_text = canvas.transform.GetChild(0).GetComponent<TMP_Text>();

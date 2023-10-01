@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6857909212186750621}
   - component: {fileID: 1573722456913021704}
   - component: {fileID: 3299236356616609566}
-  - component: {fileID: 6393699129187543087}
+  - component: {fileID: -2636278244264056075}
   m_Layer: 0
   m_Name: famphoto
   m_TagString: Untagged
@@ -131,7 +131,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &6393699129187543087
+--- !u!114 &-2636278244264056075
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6473455918946745968}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 625ad79db60fc463fac2bb9471872a0a, type: 3}
+  m_Script: {fileID: 11500000, guid: a18a23ef08d3b40e08ed182b339dec07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  item: 1
