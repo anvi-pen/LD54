@@ -446,6 +446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e6b8257a6c0340baa862603f5fa55e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bloodstain: {fileID: 0}
 --- !u!1001 &2081566654
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -457,10 +458,6 @@ PrefabInstance:
     - target: {fileID: 303986186198216121, guid: c01aa9e16d3a0451d81234b6260e5491, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 303986186198216121, guid: c01aa9e16d3a0451d81234b6260e5491, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 2373959899991904618, guid: c01aa9e16d3a0451d81234b6260e5491, type: 3}
       propertyPath: m_LocalPosition.x
@@ -501,14 +498,6 @@ PrefabInstance:
     - target: {fileID: 2373959899991904618, guid: c01aa9e16d3a0451d81234b6260e5491, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3844900316118778615, guid: c01aa9e16d3a0451d81234b6260e5491, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 4478411255819675078, guid: c01aa9e16d3a0451d81234b6260e5491, type: 3}
-      propertyPath: m_Constraints
-      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

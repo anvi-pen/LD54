@@ -79,7 +79,7 @@ GameObject:
   - component: {fileID: 1097638697114447342}
   m_Layer: 0
   m_Name: PlayerController
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -125,7 +125,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!212 &684835835830747215
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -250,4 +250,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
+  maxSanity: 3
   maxBullet: 10
+  Health_text: {fileID: 0}
+  Sanity_text: {fileID: 0}
+  Bullet_text: {fileID: 0}

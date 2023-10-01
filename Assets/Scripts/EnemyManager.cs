@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
-{ 
+{
+    [SerializeField] GameObject bloodstain;
+
     private int maxDamage;
     private int damage;
     private int power;
@@ -25,6 +27,7 @@ public class EnemyManager : MonoBehaviour
     public void takeDamage()
     {
         damage++;
+        Instantiate(bloodstain, transform.position, Quaternion.identity);
         if (damage == maxDamage)
         {
             Destroy(gameObject);
