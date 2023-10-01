@@ -64,6 +64,9 @@ public class PlayerManager : MonoBehaviour
     }
     public void addHealth(int amt)
     {
+        if (playerHealth == 0)
+            return;
+
         playerHealth += math.min(amt, maxHealth - playerHealth);
         Health_text.text = "Health: " + playerHealth;
     }
@@ -76,7 +79,12 @@ public class PlayerManager : MonoBehaviour
 
     public void addSanity(int amt)
     {
+        if (playerSanity == 0)
+            return;
+
         playerSanity += math.min(amt, maxSanity-playerSanity );
         Sanity_text.text = "Sanity: " + playerSanity;
+
+        GameObject.FindWithTag("Enemy Manager").GetComponent<AllEnemiesManager>().adjustStats(playerSanity);
     }
 }

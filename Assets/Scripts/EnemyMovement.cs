@@ -6,6 +6,8 @@ public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] float speed = 0.7f;
     [SerializeField] float speedFollow = 4.0f;
+    [SerializeField] bool vertical;
+    [SerializeField] float distance;
     private Vector2 positionA;
     private Vector2 positionB;
     private GameObject player;
@@ -19,7 +21,14 @@ public class EnemyMovement : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
         positionA = transform.position;
-        positionB = new Vector2(transform.position.x + 7, transform.position.y);
+        if (vertical)
+        {
+            positionB = new Vector2(transform.position.x, transform.position.y + distance);
+        }
+        else
+        {
+            positionB = new Vector2(transform.position.x + distance, transform.position.y);
+        }
     }
 
     // Update is called once per frame
@@ -76,5 +85,17 @@ public class EnemyMovement : MonoBehaviour
         {
             ob.GetComponent<PlayerManager>().addHealth(-power);
         }
+    }
+
+    public void slowDown()
+    {
+        StartCoroutine(slow());
+    }
+
+    IEnumerator slow()
+    {
+        speedFollow /= 2;
+        yield return new WaitForSeconds(1);
+        speedFollow *= 2;
     }
 }

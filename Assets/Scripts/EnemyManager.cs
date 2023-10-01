@@ -26,17 +26,21 @@ public class EnemyManager : MonoBehaviour
 
     public void takeDamage()
     {
+        GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
         damage++;
         Instantiate(bloodstain, transform.position, Quaternion.identity);
+        GetComponent<EnemyMovement>().slowDown();
         if (damage == maxDamage)
         {
-            Destroy(gameObject);
+            // Destroy(gameObject);
+            StartCoroutine(dead());
         }
     }
 
     public void adjustMaxDamage(int max)
     {
         maxDamage = max;
+        Debug.Log("maxDamage: " + maxDamage);
     }
 
     public void adjustPower(int p)
@@ -48,5 +52,28 @@ public class EnemyManager : MonoBehaviour
     public int getPower()
     {
         return power;
+    }
+
+    private void disable()
+    {
+        GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<EnemyMovement>().enabled = false;
+        GetComponent<BoxCollider2D>().enabled = false;
+    }
+
+    private void enable()
+    {
+        GetComponent<SpriteRenderer>().enabled = true;
+        GetComponent<EnemyMovement>().enabled = true;
+        GetComponent<BoxCollider2D>().enabled = true;
+    }
+
+    IEnumerator dead()
+    {
+        disable();
+        yield return new WaitForSeconds(5);
+        enable();
+        damage = 0;
     }
 }
