@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -11,20 +12,31 @@ public class PlayerManager : MonoBehaviour
     private int playerSanity;
     private int playerBullets;
 
-    [SerializeField] private int maxHealth;
-    [SerializeField] private int maxSanity;
-    [SerializeField] private int maxBullet;
+    public int maxHealth;
+    public int maxSanity;
+    public int maxBullet;
+    [SerializeField] private Canvas canvas;
 
-    [SerializeField] private TMP_Text Health_text;
-    [SerializeField] private TMP_Text Sanity_text;
-    [SerializeField] private TMP_Text Bullet_text;
+    private TMP_Text Health_text;
+    private TMP_Text Sanity_text;
+    private TMP_Text Bullet_text;
 
+    private void Awake()
+    {
+        Health_text = canvas.transform.GetChild(0).GetComponent<TMP_Text>();
+        Sanity_text = canvas.transform.GetChild(2).GetComponent<TMP_Text>();
+        Bullet_text = canvas.transform.GetChild(1).GetComponent<TMP_Text>();
+
+
+    }
     // Start is called before the first frame update
+    
     void Start()
     {
         playerHealth = maxHealth;
         playerBullets = maxBullet; //do we ant to start with full ammo or 0 ammo
         playerSanity = 5;
+        
         Bullet_text.text = "Bullet: " + playerBullets;
         Sanity_text.text = "Sanity: " + playerSanity;
         Health_text.text = "Health: " + playerHealth;
