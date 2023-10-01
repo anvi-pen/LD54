@@ -12,6 +12,7 @@ public class EnemyMovement : MonoBehaviour
     private bool follow = false;
     private bool continueOsc = true;
     private float timeProgress = 0;
+    private int power = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -35,8 +36,6 @@ public class EnemyMovement : MonoBehaviour
             if (follow)
             {
                 follow = false;
-                //positionA = new Vector2(transform.position.x - 3.5f, transform.position.y);
-                //positionB = new Vector2(transform.position.x + 3.5f, transform.position.y);
             }
         }
 
@@ -62,6 +61,20 @@ public class EnemyMovement : MonoBehaviour
             Vector2 dir = player.transform.position - transform.position;
             Vector3 dir3D = new Vector3(dir.x, dir.y, transform.position.z);
             transform.position += dir3D.normalized * speedFollow * Time.deltaTime;
+        }
+    }
+
+    public void adjustPower(int p)
+    {
+        power = p;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        GameObject ob = collision.gameObject;
+        if (ob.tag == "Player")
+        {
+            ob.GetComponent<PlayerManager>().addHealth(-power);
         }
     }
 }

@@ -40,11 +40,11 @@ public class PlayerMovement : MonoBehaviour
         if (player.getBullets() > 0)
         {
             GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+            Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), GetComponent<Collider2D>());
             Vector2 dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
             Vector2 dirNorm = dir.normalized;
             bullet.GetComponent<Bullet>().setDir(dirNorm.x, dirNorm.y);
             player.addBullets(-1);
-            
         }
         
     }

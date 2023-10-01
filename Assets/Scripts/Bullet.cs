@@ -27,4 +27,14 @@ public class Bullet : MonoBehaviour
         xVel = xDir;
         yVel = yDir;
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        GameObject ob = collision.gameObject;
+        if (collision.gameObject.tag == "Enemy")
+        {
+            ob.GetComponent<EnemyManager>().takeDamage();
+        }
+        Destroy(gameObject);
+    }
 }
