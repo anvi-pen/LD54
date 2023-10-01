@@ -35,7 +35,7 @@ public class PlayerManager : MonoBehaviour
     {
         playerHealth = maxHealth;
         playerBullets = maxBullet; //do we ant to start with full ammo or 0 ammo
-        playerSanity = 5;
+        playerSanity = maxSanity;
         
         Bullet_text.text = "Bullet: " + playerBullets;
         Sanity_text.text = "Sanity: " + playerSanity;
