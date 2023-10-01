@@ -36,7 +36,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnShoot()
     {
-        Debug.Log(player.getBullets());
         if (player.getBullets() > 0)
         {
             GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
