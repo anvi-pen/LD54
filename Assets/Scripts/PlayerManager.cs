@@ -20,13 +20,13 @@ public class PlayerManager : MonoBehaviour
     private TMP_Text Health_text;
     private TMP_Text Sanity_text;
     private TMP_Text Bullet_text;
-
+    public static PlayerManager self;
     private void Awake()
     {
         Health_text = canvas.transform.GetChild(0).GetComponent<TMP_Text>();
         Sanity_text = canvas.transform.GetChild(2).GetComponent<TMP_Text>();
         Bullet_text = canvas.transform.GetChild(1).GetComponent<TMP_Text>();
-
+        self = GetComponent<PlayerManager>();
 
     }
     // Start is called before the first frame update

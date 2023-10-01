@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PicFam : Collectibles // add sanity to max
 {
-    protected PlayerManager player;
 
     // Start is called before the first frame update
     void Start()

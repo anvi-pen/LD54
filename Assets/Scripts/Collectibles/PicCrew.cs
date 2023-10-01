@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using UnityEditor.Timeline.Actions;
 using UnityEngine;
 
-public class PicCrew : Collectibles // +1 sanity
+public class PicFrame : Collectibles
 {
-    protected PlayerManager player;
-
     // Start is called before the first frame update
-    
+    [SerializeField] private PlayerManager player;
     void Start()
     {
         

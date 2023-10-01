@@ -6,6 +6,7 @@ using UnityEngine;
 public class Collectibles : MonoBehaviour
 {
     // Start is called before the first frame update
+    [SerializeField] protected PlayerManager player;
     void Start()
     {
         
