@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Timeline.Actions;
 using UnityEngine;
 
-public class PicFrame : Collectibles
+public class PicFam : Collectibles // add sanity to max
 {
+    protected PlayerManager player;
+
     // Start is called before the first frame update
-    [SerializeField] private PlayerManager player;
     void Start()
     {
         
@@ -17,10 +17,9 @@ public class PicFrame : Collectibles
     {
         
     }
-
     protected override void impactPlayer()
     {
-        player.addSanity(1);
+        player.addSanity(player.maxSanity  - player.getSanity());
         Destroy(gameObject);
     }
 }
