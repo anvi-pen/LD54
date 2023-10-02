@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -21,6 +22,9 @@ public class Inventory : MonoBehaviour
         keycard
         
     }
+
+    [SerializeField]private TMP_Text[] texts;
+    
     private static Dictionary<itemType, int> inventory = new Dictionary<itemType, int>();
     public static Inventory self;
 
@@ -28,6 +32,19 @@ public class Inventory : MonoBehaviour
     {
         self = GetComponent<Inventory>();
         
+    }
+
+    private void Update()
+    {
+        texts[0].text = GetInventoryCount(itemType.ammo).ToString();
+        texts[1].text = GetInventoryCount(itemType.crewPhoto).ToString();
+        texts[2].text = GetInventoryCount(itemType.famPhoto).ToString();
+        texts[3].text = GetInventoryCount(itemType.firstaid).ToString();
+        texts[4].text = GetInventoryCount(itemType.keycard).ToString();
+        texts[5].text = GetInventoryCount(itemType.goodmeal).ToString();
+        texts[6].text = GetInventoryCount(itemType.snacks).ToString();
+        texts[7].text = GetInventoryCount(itemType.syrette).ToString();
+
     }
 
     private void Start()
@@ -59,13 +76,12 @@ public class Inventory : MonoBehaviour
         return inventory.ContainsKey(item) ? inventory[item] : 0;
     }
 
-    //start(): set all inventoryslots to -1
 
-    public bool UseItem(itemType item )
+    public void UseItem(itemType item )
     {
         if (GetInventoryCount(item) <=0)
         {
-            return false;
+            return;
         }
         switch (item)
         {
@@ -99,9 +115,7 @@ public class Inventory : MonoBehaviour
                 break;
             
             //need to add someything for keycard
-            
         }
 
-        return true;
     }
 }

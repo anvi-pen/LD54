@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 
@@ -27,6 +28,7 @@ public class Collectibles : MonoBehaviour
     {
         if (collision.transform.CompareTag("Player"))
         {
+            
             inventory.AddItem(item);
             Destroy(gameObject);
         }
