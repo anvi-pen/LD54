@@ -49,6 +49,10 @@ public class Inventory : MonoBehaviour
     public void AddItem(itemType item)
     {
         ModifyInventory(item, 1);
+        if (item == itemType.keycard && inventory[item] >= 3)
+        {
+            player.setHasKeys();
+        }
     }
     public int GetInventoryCount(itemType item)
     {

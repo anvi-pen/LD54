@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
+    private bool hasKeys  = false;
     private int playerHealth;
 
     private int playerSanity;
@@ -49,6 +50,15 @@ public class PlayerManager : MonoBehaviour
         Health_text.text = "Health: " + playerHealth;
     }
     // Update is called once per frame
+    public void setHasKeys()
+    {
+        hasKeys = true;
+    }
+
+    public bool unlockGate()
+    {
+        return hasKeys;
+    }
     void Update()
     {
     }

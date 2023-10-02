@@ -32,9 +32,5 @@ public class Collectibles : MonoBehaviour
         }
         
     }
-
-    private void impactPlayer()
-    {
-        
-    }
+    
 }
