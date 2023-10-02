@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     private PlayerManager player;
     private Inventory inventory;
     private AllEnemiesManager enemies;
+    private bool reloadDelay = false;
 
     private AudioSource audio;
     [SerializeField] AudioClip[] dryFire;
@@ -83,6 +84,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnReload()
     {
+        if (reloadDelay)
+            return;
+
         if (enemies.isPlayerInCombat())
         {
             int randomNum = Random.Range(0, reloadCombat.Length);
@@ -99,10 +103,19 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log("hello");
         Debug.Log(inventory.GetInventoryCount(Inventory.itemType.ammo));
         inventory.UseItem(Inventory.itemType.ammo);
+
+        StartCoroutine(ReloadDelay());
     }
 
     public Vector2 getDirection()
     {
         return new Vector2(xMove, yMove);
+    }
+
+    IEnumerator ReloadDelay()
+    {
+        reloadDelay = true;
+        yield return new WaitForSeconds(3);
+        reloadDelay = false;
     }
 }
