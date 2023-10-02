@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -88,6 +89,7 @@ public class PlayerManager : MonoBehaviour
             int random = UnityEngine.Random.Range(0, dead.Length);
             audio.Stop();
             audio.PlayOneShot(dead[random]);
+            SceneManager.LoadScene("Game Over");
         }
     }
 

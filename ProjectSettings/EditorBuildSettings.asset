@@ -5,7 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Calvin Map.unity
+    guid: bb740f80b4adcb74983a3659cf7366f6
+  - enabled: 1
+    path: Assets/Scenes/Game Over.unity
+    guid: 3443340a405b4431193b28669d02cd76
   m_configObjects: {}
