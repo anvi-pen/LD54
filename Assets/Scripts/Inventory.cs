@@ -5,6 +5,8 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 
 public class Inventory : MonoBehaviour
@@ -23,6 +25,7 @@ public class Inventory : MonoBehaviour
         keycard
         
     }
+    
 
     [SerializeField]private TMP_Text[] texts;
     
