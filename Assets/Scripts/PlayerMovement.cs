@@ -70,18 +70,7 @@ public class PlayerMovement : MonoBehaviour
         inventory.UseItem(Inventory.itemType.ammo);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        /*
-        collidedObject = collision.gameObject;
-        if (collision.gameObject.GetComponent<Item>() != null)
-            onTriggerEnterItem = collision.gameObject.GetComponent<Item>().ItemName;
-
-        Debug.Log("on trigger enter");
-        */
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
+    public Vector2 getDirection()
     {
         return new Vector2(xMove, yMove);
     }
