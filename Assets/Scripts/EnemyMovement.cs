@@ -92,6 +92,11 @@ public class EnemyMovement : MonoBehaviour
         StartCoroutine(slow());
     }
 
+    public bool isFollow()
+    {
+        return follow;
+    }
+
     IEnumerator slow()
     {
         speedFollow /= 2;

@@ -22,7 +22,6 @@ public class Gate : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            transform.parent.gameObject.GetComponent<Room>().updateRoomState();
             dir = collision.gameObject.GetComponent<PlayerMovement>().getDirection();
             Debug.Log(dir);
         }
@@ -47,7 +46,7 @@ public class Gate : MonoBehaviour
                 matchY = true;
             }
 
-            if (!matchX || !matchY)
+            if (matchX && matchY)
             {
                 transform.parent.gameObject.GetComponent<Room>().updateRoomState();
             }

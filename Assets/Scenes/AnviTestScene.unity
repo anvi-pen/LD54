@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &216154791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,14 +185,6 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 1379674494}
-    - target: {fileID: 1942704960293903842, guid: cb53aac880bba4a46ad0c3845de40268, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 5.77
-      objectReference: {fileID: 0}
-    - target: {fileID: 1942704960293903842, guid: cb53aac880bba4a46ad0c3845de40268, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.66
-      objectReference: {fileID: 0}
     - target: {fileID: 2373959899991904618, guid: cb53aac880bba4a46ad0c3845de40268, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.5661798
@@ -1637,7 +1629,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1768454070
 Transform:
   m_ObjectHideFlags: 0
@@ -1726,10 +1718,6 @@ PrefabInstance:
     - target: {fileID: 2336785818446631120, guid: 32a27882fe96b4704b0aaac59912b252, type: 3}
       propertyPath: m_Name
       value: Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 2336785818446631120, guid: 32a27882fe96b4704b0aaac59912b252, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7433366908249017288, guid: 32a27882fe96b4704b0aaac59912b252, type: 3}
       propertyPath: m_LocalPosition.x
