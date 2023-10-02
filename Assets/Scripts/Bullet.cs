@@ -12,6 +12,9 @@ public class Bullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Vector2 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        transform.up = mouse - new Vector2(transform.position.x, transform.position.y);
+
         Destroy(gameObject, 5);
         rb = gameObject.GetComponent<Rigidbody2D>();
     }

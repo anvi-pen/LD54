@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.61223495, y: 3.9188647, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -75,8 +75,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_SortingOrder: -2
+  m_Sprite: {fileID: 21300000, guid: cfd30b93e4ac446449a7b2cccd34d148, type: 3}
   m_Color: {r: 0.46226418, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -146,9 +146,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.021626294, y: 0.030749917}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.33967298
 --- !u!114 &4291474125186245440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,3 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3de352fb129894310a9bef348e4d1af6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blood:
+  - {fileID: 21300000, guid: cfd30b93e4ac446449a7b2cccd34d148, type: 3}
+  - {fileID: 21300000, guid: 8133ff83746b44a77b5005b831038349, type: 3}
+  - {fileID: 21300000, guid: ee33619f5a6d54efb9b49bcae43d77a7, type: 3}

@@ -181,6 +181,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 684835835830747215, guid: cb53aac880bba4a46ad0c3845de40268, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9d144111c93984f6891cc67e1ff28c07, type: 3}
     - target: {fileID: 1097638697114447342, guid: cb53aac880bba4a46ad0c3845de40268, type: 3}
       propertyPath: canvas
       value: 

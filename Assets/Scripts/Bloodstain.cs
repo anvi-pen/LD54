@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Bloodstain : MonoBehaviour
 {
+    [SerializeField] Sprite[] blood;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        int randomNum = UnityEngine.Random.Range(0, blood.Length);
+        GetComponent<SpriteRenderer>().sprite = blood[randomNum];
     }
 
     // Update is called once per frame

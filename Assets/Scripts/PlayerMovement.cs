@@ -9,12 +9,13 @@ public class PlayerMovement : MonoBehaviour
     private float xMove = 0;
     private float yMove = 0;
 
-    private float speed = 5;
+    private float speed = 3;
     // private bool inventoryOpen = false;
     [SerializeField] GameObject bulletPrefab;
     private PlayerManager player;
     private Inventory inventory;
     private AllEnemiesManager enemies;
+    private bool reloadDelay = false;
 
     private AudioSource audio;
     [SerializeField] AudioClip[] dryFire;
@@ -30,6 +31,12 @@ public class PlayerMovement : MonoBehaviour
         enemies = GameObject.FindGameObjectWithTag("Enemy Manager").GetComponent<AllEnemiesManager>();
 
         audio = GetComponent<AudioSource>();
+    }
+
+    void Update()
+    {
+        Vector2 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        transform.up = mouse - new Vector2(transform.position.x, transform.position.y);
     }
 
     // Update is called once per frame
@@ -83,6 +90,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnReload()
     {
+        if (reloadDelay)
+            return;
+
         if (enemies.isPlayerInCombat())
         {
             int randomNum = Random.Range(0, reloadCombat.Length);
@@ -99,10 +109,19 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log("hello");
         Debug.Log(inventory.GetInventoryCount(Inventory.itemType.ammo));
         inventory.UseItem(Inventory.itemType.ammo);
+
+        StartCoroutine(ReloadDelay());
     }
 
     public Vector2 getDirection()
     {
         return new Vector2(xMove, yMove);
+    }
+
+    IEnumerator ReloadDelay()
+    {
+        reloadDelay = true;
+        yield return new WaitForSeconds(3);
+        reloadDelay = false;
     }
 }
