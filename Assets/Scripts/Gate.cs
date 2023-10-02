@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Gate : MonoBehaviour
 {
-    private bool delayClose = false;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -22,12 +20,7 @@ public class Gate : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            delayClose = !delayClose;
+            transform.parent.gameObject.GetComponent<Room>().updateRoomState();
         }
-    }
-
-    public bool getDelayClose()
-    {
-        return delayClose;
     }
 }
