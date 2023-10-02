@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -26,6 +28,11 @@ public class PlayerManager : MonoBehaviour
     private AudioSource audio;
     [SerializeField] AudioClip[] playerInjured;
     [SerializeField] AudioClip[] dead;
+
+    [SerializeField] Image vignetteHealth;
+    [SerializeField] Image vignetteSanity;
+    [SerializeField] Sprite[] vHealth;
+    [SerializeField] Sprite[] vSanity;
 
     private void Awake()
     {
@@ -80,8 +87,13 @@ public class PlayerManager : MonoBehaviour
     }
     public void addHealth(int amt)
     {
-        if (playerHealth == 0)
-            return;
+        if (playerHealth <= 0)
+        {
+            int random = UnityEngine.Random.Range(0, dead.Length);
+            audio.Stop();
+            audio.PlayOneShot(dead[random]);
+            SceneManager.LoadScene("Game Over");
+        }
 
         if (amt < 0)
         {
@@ -93,11 +105,28 @@ public class PlayerManager : MonoBehaviour
         playerHealth += math.min(amt, maxHealth - playerHealth);
         Health_text.text = "Health: " + playerHealth;
 
+        if (playerHealth <= 6)
+        {
+            if (playerHealth <= 3)
+            {
+                vignetteHealth.sprite = vHealth[2];
+            }
+            else
+            {
+                vignetteHealth.sprite = vHealth[1];
+            }
+        }
+        else
+        {
+            vignetteHealth.sprite = vHealth[0];
+        }
+
         if (playerHealth == 0)
         {
             int random = UnityEngine.Random.Range(0, dead.Length);
             audio.Stop();
             audio.PlayOneShot(dead[random]);
+            SceneManager.LoadScene("Game Over");
         }
     }
 
@@ -114,6 +143,8 @@ public class PlayerManager : MonoBehaviour
 
         playerSanity += math.min(amt, maxSanity-playerSanity );
         Sanity_text.text = "Sanity: " + playerSanity;
+
+        vignetteSanity.sprite = vSanity[playerSanity];
 
         GameObject.FindWithTag("Enemy Manager").GetComponent<AllEnemiesManager>().adjustStats(playerSanity);
     }
