@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Gate : MonoBehaviour
 {
-    private bool delayClose = false;
+    private Vector2 dir = Vector2.zero;
 
     // Start is called before the first frame update
     void Start()
@@ -22,12 +22,35 @@ public class Gate : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            delayClose = !delayClose;
+            transform.parent.gameObject.GetComponent<Room>().updateRoomState();
+            dir = collision.gameObject.GetComponent<PlayerMovement>().getDirection();
+            Debug.Log(dir);
         }
     }
 
-    public bool getDelayClose()
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        return delayClose;
+        if (collision.gameObject.tag == "Player")
+        {
+            Vector2 exitDir = collision.gameObject.GetComponent<PlayerMovement>().getDirection();
+            Debug.Log(exitDir);
+
+            bool matchX = false;
+            bool matchY = false;
+
+            if (dir.x * exitDir.x >= 0)
+            {
+                matchX = true;
+            }
+            if (dir.y * exitDir.y >= 0)
+            {
+                matchY = true;
+            }
+
+            if (!matchX || !matchY)
+            {
+                transform.parent.gameObject.GetComponent<Room>().updateRoomState();
+            }
+        }
     }
 }

@@ -31,6 +31,15 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector2 movementVector = movementValue.Get<Vector2>();
 
+        if (Mathf.Abs(movementVector.x) > Mathf.Abs(movementVector.y))
+        {
+            movementVector.y = 0;
+        }
+        else
+        {
+            movementVector.x = 0;
+        }
+
         xMove = movementVector.x;
         yMove = movementVector.y;
     }
@@ -74,22 +83,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        /*
-        if (collision.gameObject.GetComponent<Item>() != null)
-        {
-            if (onTriggerEnterItem == collision.gameObject.GetComponent<Item>().ItemName)
-            {
-                collidedObject = null;
-                onTriggerEnterItem = "";
-            }
-        }
-        else
-        {
-            collidedObject = null;
-            onTriggerEnterItem = "";
-        }
-
-        Debug.Log("on trigger exit");
-        */
+        return new Vector2(xMove, yMove);
     }
 }
