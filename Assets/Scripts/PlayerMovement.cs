@@ -33,6 +33,12 @@ public class PlayerMovement : MonoBehaviour
         audio = GetComponent<AudioSource>();
     }
 
+    void Update()
+    {
+        Vector2 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        transform.up = mouse - new Vector2(transform.position.x, transform.position.y);
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
