@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private float xMove = 0;
     private float yMove = 0;
 
-    private float speed = 5;
+    private float speed = 3;
     // private bool inventoryOpen = false;
     [SerializeField] GameObject bulletPrefab;
     private PlayerManager player;
