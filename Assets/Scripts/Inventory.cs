@@ -93,6 +93,7 @@ public class Inventory : MonoBehaviour
                 ModifyInventory(itemType.ammo, - 1);
                 player.addBullets(1);
                 break;
+            
             //need to add someything for keycard
             
         }
