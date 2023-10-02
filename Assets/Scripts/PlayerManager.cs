@@ -71,8 +71,13 @@ public class PlayerManager : MonoBehaviour
     }
     public void addHealth(int amt)
     {
-        if (playerHealth == 0)
-            return;
+        if (playerHealth <= 0)
+        {
+            int random = UnityEngine.Random.Range(0, dead.Length);
+            audio.Stop();
+            audio.PlayOneShot(dead[random]);
+            SceneManager.LoadScene("Game Over");
+        }
 
         if (amt < 0)
         {
