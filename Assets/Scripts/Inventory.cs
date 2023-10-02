@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class Inventory : MonoBehaviour
@@ -47,9 +48,21 @@ public class Inventory : MonoBehaviour
 
     }
 
+    public Button[] buttons;
+
     private void Start()
     {
         player = PlayerManager.self;
+        buttons[0].onClick.AddListener(() => UseItem(itemType.ammo));
+        buttons[1].onClick.AddListener(() => UseItem(itemType.crewPhoto));
+        buttons[2].onClick.AddListener(() => UseItem(itemType.famPhoto));
+        buttons[3].onClick.AddListener(() => UseItem(itemType.firstaid));
+        buttons[4].onClick.AddListener(() => UseItem(itemType.keycard));
+        buttons[5].onClick.AddListener(() => UseItem(itemType.goodmeal));
+        buttons[6].onClick.AddListener(() => UseItem(itemType.snacks));
+        buttons[7].onClick.AddListener(() => UseItem(itemType.syrette));
+
+
     }
 
     public static int ModifyInventory(itemType item, int amount) {
@@ -77,6 +90,15 @@ public class Inventory : MonoBehaviour
     }
 
 
+    public void UseAmmo()
+    {
+        if (GetInventoryCount(itemType.ammo) <= 0)
+        {
+            return;
+        }
+        ModifyInventory(itemType.ammo, - 1);
+        player.addBullets(1);
+    }
     public void UseItem(itemType item )
     {
         if (GetInventoryCount(item) <=0)

@@ -108,7 +108,7 @@ public class PlayerMovement : MonoBehaviour
 
         Debug.Log("hello");
         Debug.Log(inventory.GetInventoryCount(Inventory.itemType.ammo));
-        inventory.UseItem(Inventory.itemType.ammo);
+        inventory.UseAmmo();
 
         StartCoroutine(ReloadDelay());
     }

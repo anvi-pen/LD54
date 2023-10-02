@@ -10,6 +10,7 @@ public class Collectibles : MonoBehaviour
     // Start is called before the first frame update
     private PlayerManager player;
     private Inventory inventory;
+    public float spawnChance;
 
     [SerializeField] private Inventory.itemType item;
     void Start()
