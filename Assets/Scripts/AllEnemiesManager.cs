@@ -52,4 +52,14 @@ public class AllEnemiesManager : MonoBehaviour
             enemy.GetComponent<EnemyManager>().adjustPower(power);
         }
     }
+
+    public bool isPlayerInCombat()
+    { 
+        foreach (GameObject e in enemies)
+        {
+            if (e.GetComponent<EnemyMovement>().isFollow())
+                return true;
+        }
+        return false;
+    }
 }

@@ -14,11 +14,22 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] GameObject bulletPrefab;
     private PlayerManager player;
     private Inventory inventory;
+    private AllEnemiesManager enemies;
+
+    private AudioSource audio;
+    [SerializeField] AudioClip[] dryFire;
+    [SerializeField] AudioClip shot;
+    [SerializeField] AudioClip[] reloadCombat;
+    [SerializeField] AudioClip[] reloadNotCombat;
+
     // Start is called before the first frame update
     void Start()
     {
         inventory = Inventory.self;
         player = PlayerManager.self;
+        enemies = GameObject.FindGameObjectWithTag("Enemy Manager").GetComponent<AllEnemiesManager>();
+
+        audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -59,12 +70,32 @@ public class PlayerMovement : MonoBehaviour
             Vector2 dirNorm = dir.normalized;
             bullet.GetComponent<Bullet>().setDir(dirNorm.x, dirNorm.y);
             player.addBullets(-1);
+            audio.Stop();
+            audio.PlayOneShot(shot);
         }
-        
+        else
+        {
+            int randomNum = Random.Range(0, dryFire.Length);
+            audio.Stop();
+            audio.PlayOneShot(dryFire[randomNum]);
+        }
     }
 
     private void OnReload()
     {
+        if (enemies.isPlayerInCombat())
+        {
+            int randomNum = Random.Range(0, reloadCombat.Length);
+            audio.Stop();
+            audio.PlayOneShot(reloadCombat[randomNum]);
+        }
+        else
+        {
+            int randomNum = Random.Range(0, reloadNotCombat.Length);
+            audio.Stop();
+            audio.PlayOneShot(reloadNotCombat[randomNum]);
+        }
+
         Debug.Log("hello");
         Debug.Log(inventory.GetInventoryCount(Inventory.itemType.ammo));
         inventory.UseItem(Inventory.itemType.ammo);
